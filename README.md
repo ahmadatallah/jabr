@@ -135,9 +135,3 @@ bun run typecheck  # tsc --noEmit
 
 The `jabr` source code is licensed under [MIT](LICENSE).
 
-The logo (`assets/logo.svg`, `assets/logo-dark.svg`, `assets/logo.png`) is set in
-the [**Anti**](https://github.com/aliftype/anti) typeface (© 2021 Khaled Hosny) and,
-because it embeds Anti's glyph outlines, is distributed under the **GNU AGPL-3.0**
-— the same license as the font. That per-file licensing applies only to those two
-logo files; everything else is MIT. See [`assets/NOTICE`](assets/NOTICE) for
-details.
