@@ -2,9 +2,9 @@
 /**
  * jabr command-line entry point.
  *
- * Parses `process.argv`, dispatches to the matching handler in
- * {@link "scripts/lib/commands" | commands}, and renders top-level help. Run via
- * `bun scripts/jabr.ts <command>` (or the `jabr` bin once installed).
+ * Parses `process.argv`, dispatches to the matching handler in the `commands`
+ * module, and renders top-level help. Run via `bun scripts/jabr.ts <command>`
+ * (or the `jabr` bin once installed).
  *
  * @packageDocumentation
  */

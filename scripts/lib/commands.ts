@@ -2,10 +2,9 @@
  * Command handlers — one exported function per `jabr` subcommand.
  *
  * Each handler receives the already-sliced argument list (everything after the
- * command word), validates it, and performs the operation via the
- * {@link "scripts/lib/git" | git} and {@link "scripts/lib/stack" | stack}
- * modules. Diagnostics go through the {@link "scripts/lib/logger" | logger};
- * structured data is written directly to stdout.
+ * command word), validates it, and performs the operation via the `git` and
+ * `stack` modules. Diagnostics go through the `logger`; structured data is
+ * written directly to stdout.
  *
  * @packageDocumentation
  */

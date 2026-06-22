@@ -5,7 +5,8 @@
     "scripts/jabr.ts",
     "scripts/lib/git.ts",
     "scripts/lib/stack.ts",
-    "scripts/lib/commands.ts"
+    "scripts/lib/commands.ts",
+    "scripts/lib/logger.ts"
   ],
   "out": "site",
   "readme": "README.md",
