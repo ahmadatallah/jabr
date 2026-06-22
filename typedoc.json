@@ -1,0 +1,20 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "jabr",
+  "entryPoints": [
+    "scripts/jabr.ts",
+    "scripts/lib/git.ts",
+    "scripts/lib/stack.ts",
+    "scripts/lib/commands.ts"
+  ],
+  "out": "site",
+  "readme": "README.md",
+  "includeVersion": true,
+  "githubPages": false,
+  "excludePrivate": false,
+  "excludeInternal": true,
+  "categorizeByGroup": true,
+  "navigationLinks": {
+    "GitHub": "https://github.com/ahmadatallah/jabr"
+  }
+}

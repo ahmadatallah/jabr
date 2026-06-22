@@ -1,0 +1,46 @@
+{
+  "name": "jabr",
+  "version": "0.1.0",
+  "description": "A Claude-native stacked-pull-request workflow on plain git + the GitHub gh CLI.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Ahmad Atallah",
+  "homepage": "https://github.com/ahmadatallah/jabr",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmadatallah/jabr.git"
+  },
+  "bin": {
+    "jabr": "scripts/jabr.ts"
+  },
+  "scripts": {
+    "start": "bun scripts/jabr.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "dependencies": {
+    "consola": "^3",
+    "picocolors": "^1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typedoc": "latest",
+    "typescript": "^5"
+  },
+  "keywords": [
+    "stacked-prs",
+    "stacked-diffs",
+    "git",
+    "github",
+    "gh",
+    "pull-request",
+    "claude",
+    "claude-code",
+    "agent-skill"
+  ]
+}
