@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Generated API docs (TypeDoc) — built + deployed by CI
+site/
+
+# Build / TS
+*.tsbuildinfo
+
+# macOS
+.DS_Store
+
+# Editor cruft
+*.swp
+*~
+.idea/
+.vscode/
+
+# Logs / temp
+*.log
+*.tmp
