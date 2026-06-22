@@ -1,0 +1,21 @@
+jabr logo — license & attribution
+==================================
+
+These files, which depict the jabr wordmark:
+
+    assets/logo.svg
+    assets/logo.png
+
+are set in the Anti typeface (أنتِ), an Arabic display typeface by Khaled Hosny
+(aliftype):
+
+    https://github.com/aliftype/anti
+    Copyright (c) 2021 Khaled Hosny
+
+Anti is licensed under the GNU Affero General Public License, version 3
+(AGPL-3.0). Because these logo files embed glyph outlines from Anti, they are
+derivative works of the font and are likewise distributed under the AGPL-3.0.
+The full license text is in LICENSE.AGPL-3.0 in this directory.
+
+This per-file licensing applies ONLY to the two logo files named above. Every
+other part of the jabr project is licensed under the MIT License (see ../LICENSE).
