@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-# jabr · جَبْر
+# Jabr
 
 > **jabr** (Arabic, جَبْر — "the reunion of broken parts"; the root of *al-jabr → algebra*).
 > Reunite a feature's broken-down pieces into one clean, reviewable whole.
