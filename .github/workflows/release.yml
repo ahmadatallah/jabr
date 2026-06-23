@@ -1,0 +1,40 @@
+name: Release
+
+# Semantic-versioned releases, driven by Conventional Commits.
+#
+# release-please watches pushes to main and maintains a "release PR" that bumps
+# the version + updates the changelog. Merging that PR creates the git tag and a
+# GitHub Release. No external service or token is required — it runs entirely on
+# the built-in GITHUB_TOKEN.
+#
+# Releases are restricted to the repository owner: the job only runs when the
+# actor who pushed/merged to main is the repo owner (see the job-level `if`).
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# Never run two release passes at once.
+concurrency:
+  group: release-please
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    # Only the repository owner can cut releases. For a user-owned repo
+    # `repository_owner` is the owner's login; replace with a hard-coded login
+    # (or an allow-list) if this repo moves under an organization.
+    if: github.actor == github.repository_owner
+    steps:
+      - name: Run release-please
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Manifest mode: configuration lives in the two JSON files below.
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

@@ -13,7 +13,7 @@ license: MIT
 compatibility: Requires Bun, git, and the GitHub gh CLI (run `gh auth login`). Designed for Claude Code.
 metadata:
   author: Ahmad Atallah
-  version: "0.1.0"
+  version: "0.1.0" # x-release-please-version
 allowed-tools: Bash(bun:*) Bash(git:*) Bash(gh:*) Read Edit Write
 ---
 
