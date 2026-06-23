@@ -4,6 +4,9 @@ node_modules/
 # Generated API docs (TypeDoc) — built + deployed by CI
 site/
 
+# Test coverage reports
+coverage/
+
 # Build / TS
 *.tsbuildinfo
 
