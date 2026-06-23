@@ -13,7 +13,7 @@ import * as commands from "./lib/commands";
 import { fail, logger } from "./lib/logger";
 
 /** The package version, mirrored by `package.json` and `SKILL.md`'s `metadata.version`. */
-export const VERSION = "0.1.0"; // x-release-please-version
+export const VERSION = "0.1.1"; // x-release-please-version
 
 /** Print top-level usage to stdout. */
 const usage = (): void => {

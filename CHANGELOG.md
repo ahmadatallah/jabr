@@ -5,6 +5,13 @@ All notable changes to **jabr** are documented here. The format is based on
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The canonical version is the
 `metadata.version` field in [`SKILL.md`](SKILL.md) (mirrored by `package.json`).
 
+## [0.1.1](https://github.com/ahmadatallah/jabr/compare/v0.1.0...v0.1.1) (2026-06-23)
+
+
+### Features
+
+* **engine:** support JABR_GIT_BIN/JABR_GH_BIN overrides and add hasGitHubCli() ([a7c88a3](https://github.com/ahmadatallah/jabr/commit/a7c88a32bd016ace5225a160aadd02a512a0717a))
+
 ## [Unreleased]
 
 ### Added
