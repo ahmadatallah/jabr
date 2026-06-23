@@ -10,13 +10,9 @@
  */
 
 import { afterAll, beforeEach, expect, test } from "bun:test";
-import { mkdtemp, rm } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
 
 import * as commands from "../scripts/lib/commands";
 import { branchExists, currentBranch, git, gitTry } from "../scripts/lib/git";
-import { logger } from "../scripts/lib/logger";
 import {
   ancestors,
   baseOf,
@@ -26,19 +22,7 @@ import {
   trunk,
   walk,
 } from "../scripts/lib/stack";
-
-// Keep test output readable: only surface warnings and errors from the logger.
-logger.level = 1;
-
-const originalCwd = process.cwd();
-const tempRepos: string[] = [];
-
-/** Stage everything and commit, relative to the current working directory. */
-const commitFile = async (name: string, content: string, message: string): Promise<void> => {
-  await Bun.write(name, content);
-  await git(["add", "-A"]);
-  await git(["commit", "-q", "-m", message]);
-};
+import { cleanupRepos, commitFile, makeRepo } from "./helpers";
 
 /** Create a stacked branch (on the current branch) carrying one new commit. */
 const stackBranch = async (name: string, file: string, message: string): Promise<void> => {
@@ -55,19 +39,12 @@ const isAncestor = async (maybeAncestor: string, descendant: string): Promise<bo
   (await gitTry(["merge-base", "--is-ancestor", maybeAncestor, descendant])).code === 0;
 
 beforeEach(async () => {
-  const dir = await mkdtemp(join(tmpdir(), "jabr-test-"));
-  tempRepos.push(dir);
-  process.chdir(dir);
-  await git(["init", "-q", "-b", "main"]);
-  await git(["config", "user.email", "test@example.com"]);
-  await git(["config", "user.name", "jabr test"]);
-  await commitFile("root.txt", "root\n", "root");
+  await makeRepo();
   await commands.init([]);
 });
 
 afterAll(async () => {
-  process.chdir(originalCwd);
-  for (const dir of tempRepos) await rm(dir, { recursive: true, force: true });
+  await cleanupRepos();
 });
 
 test("init records the trunk", async () => {

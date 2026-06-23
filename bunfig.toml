@@ -1,0 +1,8 @@
+[test]
+# Coverage is measured over the engine source only (test files and the test
+# harness are excluded) and must stay at 100%.
+coverage = true
+coverageSkipTestFiles = true
+coveragePathIgnorePatterns = ["tests/"]
+coverageReporter = ["text", "lcov"]
+coverageThreshold = 1.0
