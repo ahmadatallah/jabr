@@ -13,7 +13,7 @@ import * as commands from "./lib/commands";
 import { fail, logger } from "./lib/logger";
 
 /** The package version, mirrored by `package.json` and `SKILL.md`'s `metadata.version`. */
-export const VERSION = "0.1.0";
+export const VERSION = "0.1.0"; // x-release-please-version
 
 /** Print top-level usage to stdout. */
 const usage = (): void => {
@@ -51,7 +51,7 @@ GITHUB
 };
 
 /** Parse arguments and run the requested command. */
-const main = async (): Promise<void> => {
+export const main = async (): Promise<void> => {
   const [command, ...rest] = process.argv.slice(2);
   switch (command) {
     case "init":
@@ -137,7 +137,13 @@ const main = async (): Promise<void> => {
   }
 };
 
-main().catch((error: unknown) => {
-  logger.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
-});
+/** Run {@link main}, reporting any uncaught error through the logger and exiting non-zero. */
+export const run = (): Promise<void> =>
+  main().catch((error: unknown) => {
+    logger.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+
+// Only auto-run when invoked directly (e.g. `bun scripts/jabr.ts`), not when
+// imported by the test suite.
+if (import.meta.main) void run();
