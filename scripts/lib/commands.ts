@@ -17,6 +17,7 @@ import {
   ghTry,
   git,
   gitTry,
+  hasGitHubCli,
   hasOrigin,
   inRepo,
   needGitHubCli,
@@ -536,7 +537,7 @@ export const sync = async (args: string[]): Promise<void> => {
   }
 
   const mergedBranches: string[] = [];
-  if (Bun.which("gh") && (await hasOrigin())) {
+  if (hasGitHubCli() && (await hasOrigin())) {
     for (const branch of await allBranches()) {
       if (!(await isTracked(branch))) continue;
       const state = await ghTry(["pr", "view", branch, "--json", "state"]);

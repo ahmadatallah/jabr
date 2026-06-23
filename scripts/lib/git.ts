@@ -22,6 +22,16 @@ export interface RunResult {
 }
 
 /**
+ * Resolve the executable to spawn for a logical binary. Defaults to the bare
+ * command name (resolved on `PATH`); `JABR_GIT_BIN` / `JABR_GH_BIN` override it,
+ * which lets callers pin a specific binary and lets the test suite inject a
+ * stand-in `gh`.
+ * @internal
+ */
+const binaryPath = (binary: "git" | "gh"): string =>
+  (binary === "git" ? process.env.JABR_GIT_BIN : process.env.JABR_GH_BIN) || binary;
+
+/**
  * Internal dispatcher that spawns `git` or `gh` and captures its output.
  * @internal
  */
@@ -29,10 +39,8 @@ const runProcess = async (
   binary: "git" | "gh",
   args: string[],
 ): Promise<RunResult> => {
-  const result =
-    binary === "git"
-      ? await $`git ${args}`.nothrow().quiet()
-      : await $`gh ${args}`.nothrow().quiet();
+  const command = binaryPath(binary);
+  const result = await $`${command} ${args}`.nothrow().quiet();
   return {
     code: result.exitCode,
     stdout: result.stdout.toString(),
@@ -92,9 +100,17 @@ export const inRepo = async (): Promise<void> => {
   }
 };
 
+/**
+ * Whether the GitHub CLI is available — either explicitly pinned via
+ * `JABR_GH_BIN` or discoverable on the current `PATH`.
+ */
+export const hasGitHubCli = (): boolean =>
+  Boolean(process.env.JABR_GH_BIN) ||
+  Boolean(Bun.which("gh", { PATH: process.env.PATH ?? "" }));
+
 /** Ensure the GitHub CLI (`gh`) is installed, exiting with install guidance if not. */
 export const needGitHubCli = (): void => {
-  if (!Bun.which("gh")) {
+  if (!hasGitHubCli()) {
     fail("the GitHub CLI 'gh' is required for this command (https://cli.github.com)");
   }
 };
