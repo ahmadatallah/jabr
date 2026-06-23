@@ -7,6 +7,20 @@ All notable changes to **jabr** are documented here. The format is based on
 
 ## [Unreleased]
 
+### Added
+- 100% test coverage of the stack engine and CLI, including the `gh`-driven
+  `submit`/`sync` paths (exercised offline via a local bare remote and a fake
+  `gh`) and every `fail()`/error branch. Coverage is enforced in CI at 100%
+  (`coverageThreshold = 1.0` in `bunfig.toml`).
+- README status badges (CI, coverage, docs, version) and a project-status table.
+- Automated releases via [release-please](https://github.com/googleapis/release-please)
+  (`.github/workflows/release.yml`): Conventional Commits drive version bumps,
+  changelog updates, tags, and GitHub Releases.
+
+### Changed
+- `git.ts` resolves the `git`/`gh` binaries through optional `JABR_GIT_BIN` /
+  `JABR_GH_BIN` overrides, and exposes `hasGitHubCli()` for CLI detection.
+
 ## [0.1.0] - 2026-06-22
 
 ### Added

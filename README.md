@@ -7,6 +7,14 @@
 
 # Jabr
 
+<p align="center">
+  <a href="https://github.com/ahmadatallah/jabr/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/ahmadatallah/jabr/actions/workflows/ci.yml/badge.svg" /></a>
+  <a href="https://github.com/ahmadatallah/jabr/actions/workflows/ci.yml"><img alt="Coverage" src="https://img.shields.io/badge/coverage-100%25-brightgreen" /></a>
+  <a href="https://ahmadatallah.github.io/jabr/"><img alt="Docs" src="https://img.shields.io/badge/docs-TypeDoc-3178c6?logo=readthedocs&logoColor=white" /></a>
+  <a href="https://github.com/ahmadatallah/jabr/releases"><img alt="Version" src="https://img.shields.io/github/package-json/v/ahmadatallah/jabr?label=version&color=blue" /></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green" /></a>
+</p>
+
 > **jabr** (Arabic, جَبْر — "the reunion of broken parts"; the root of *al-jabr → algebra*).
 > Reunite a feature's broken-down pieces into one clean, reviewable whole.
 
@@ -126,10 +134,37 @@ Merge through GitHub as usual, then `jabr sync`. See
 ## Development
 
 ```bash
-bun install        # dev deps (TypeScript + Bun types) for typecheck/tests
-bun test           # run the test suite
-bun run typecheck  # tsc --noEmit
+bun install            # dev deps (TypeScript + Bun types) for typecheck/tests
+bun test               # run the test suite
+bun test --coverage    # run with the coverage report (gated at 100%)
+bun run typecheck      # tsc --noEmit
 ```
+
+### Project status
+
+| Aspect | Status | Source of truth |
+|---|---|---|
+| **Tests / coverage** | 100% lines & functions, enforced in CI | `bun test --coverage` + `coverageThreshold = 1.0` in [`bunfig.toml`](bunfig.toml) |
+| **CI** | Typecheck + tests on every push/PR | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) |
+| **Docs** | TypeDoc API reference auto-published to GitHub Pages | [`.github/workflows/docs.yml`](.github/workflows/docs.yml) → <https://ahmadatallah.github.io/jabr/> |
+| **Version** | Semantic Versioning, released by a bot | [`package.json`](package.json) · automated by [`.github/workflows/release.yml`](.github/workflows/release.yml) |
+
+The coverage badge is a fixed **100%** because CI fails the build if coverage
+drops below the threshold — so it can never silently go stale.
+
+### Releases
+
+Releases are automated with
+[release-please](https://github.com/googleapis/release-please). Commit using
+[Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`,
+`chore:`, …); on every push to `main` the bot opens/updates a **release PR** that
+bumps the version (in `package.json`, [`SKILL.md`](SKILL.md), and
+`scripts/jabr.ts`) and updates the [changelog](CHANGELOG.md). Merging that PR
+tags the version and publishes a GitHub Release.
+
+The release workflow is **restricted to the repository owner** — it only runs
+when the actor pushing/merging to `main` is the repo owner
+(`if: github.actor == github.repository_owner`).
 
 ## License
 
