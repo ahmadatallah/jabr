@@ -9,7 +9,9 @@
       "bump-patch-for-minor-pre-major": true,
       "extra-files": [
         "scripts/jabr.ts",
-        "SKILL.md"
+        "skills/jabr/SKILL.md",
+        { "type": "json", "path": ".claude-plugin/plugin.json", "jsonpath": "$.version" },
+        { "type": "json", "path": ".claude-plugin/marketplace.json", "jsonpath": "$.plugins[0].version" }
       ]
     }
   }

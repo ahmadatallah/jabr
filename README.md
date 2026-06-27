@@ -51,17 +51,25 @@ mechanics (parent tracking, `rebase --onto`, force-push ordering, PR base wiring
 
 ## Install
 
-```bash
-git clone https://github.com/ahmadatallah/jabr.git ~/.claude/skills/jabr
-# or symlink a working copy:
-ln -s ~/repos/jabr ~/.claude/skills/jabr
+`jabr` is distributed as a Claude Code **plugin**. Add this repo as a marketplace and
+install it — Claude Code then loads the skill automatically (and it also auto-activates
+from its description):
+
+```text
+/plugin marketplace add ahmadatallah/jabr
+/plugin install jabr@jabr
 ```
 
-Once it's under `~/.claude/skills/`, Claude Code loads it automatically and you can invoke
-`/jabr`. To use the engine directly, add an alias:
+Pin a tagged version if you prefer: `/plugin marketplace add ahmadatallah/jabr@v0.1.0`.
+
+[Bun](https://bun.sh) and (for `submit`/`sync`) an authenticated [`gh`](https://cli.github.com)
+are still required on your machine — the plugin can't install them for you.
+
+To run the engine by hand for development, clone the repo and alias the script directly:
 
 ```bash
-alias jabr='bun ~/.claude/skills/jabr/scripts/jabr.ts'
+git clone https://github.com/ahmadatallah/jabr.git
+alias jabr='bun /path/to/jabr/scripts/jabr.ts'
 ```
 
 ## Quick start
@@ -128,7 +136,7 @@ branch's *own* commits are replayed onto the moved parent — no duplicates.
 `jabr` deliberately stops at what plain git + `gh` can do well. Anything that needs a hosted
 service — a merge queue, a web review UI, server-side stack management — is out of scope.
 Merge through GitHub as usual, then `jabr sync`. See
-[`references/workflow.md`](references/workflow.md) for how to do less-common operations
+[`references/workflow.md`](skills/jabr/references/workflow.md) for how to do less-common operations
 (reorder, split, absorb) by hand.
 
 ## Development
@@ -158,7 +166,7 @@ Releases are automated with
 [release-please](https://github.com/googleapis/release-please). Commit using
 [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`,
 `chore:`, …); on every push to `main` the bot opens/updates a **release PR** that
-bumps the version (in `package.json`, [`SKILL.md`](SKILL.md), and
+bumps the version (in `package.json`, [`SKILL.md`](skills/jabr/SKILL.md), and
 `scripts/jabr.ts`) and updates the [changelog](CHANGELOG.md). Merging that PR
 tags the version and publishes a GitHub Release.
 

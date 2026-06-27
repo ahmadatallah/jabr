@@ -1,0 +1,15 @@
+{
+  "name": "jabr",
+  "description": "jabr — Claude-native stacked pull requests",
+  "owner": { "name": "Ahmad Atallah", "url": "https://github.com/ahmadatallah" },
+  "plugins": [
+    {
+      "name": "jabr",
+      "source": "./",
+      "description": "Structure a feature as a stack of small, dependent PRs (git + gh).",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": ["stacked-prs", "git", "github"]
+    }
+  ]
+}
