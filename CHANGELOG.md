@@ -5,6 +5,13 @@ All notable changes to **jabr** are documented here. The format is based on
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The canonical version is the
 `metadata.version` field in [`SKILL.md`](SKILL.md) (mirrored by `package.json`).
 
+## [0.1.2](https://github.com/ahmadatallah/jabr/compare/v0.1.1...v0.1.2) (2026-06-27)
+
+
+### Features
+
+* distribute jabr as a Claude Code plugin via marketplace ([#2](https://github.com/ahmadatallah/jabr/issues/2)) ([0806a0b](https://github.com/ahmadatallah/jabr/commit/0806a0b43734f84a6958da7095cc08670a879b37))
+
 ## [0.1.1](https://github.com/ahmadatallah/jabr/compare/v0.1.0...v0.1.1) (2026-06-23)
 
 
