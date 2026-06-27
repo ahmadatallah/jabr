@@ -1,11 +1,23 @@
 {
   "name": "jabr",
   "displayName": "jabr — stacked pull requests",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Structure a feature as a stack of small, dependent pull requests and manage it end-to-end with plain git + the GitHub gh CLI.",
-  "author": { "name": "Ahmad Atallah", "url": "https://github.com/ahmadatallah" },
+  "author": {
+    "name": "Ahmad Atallah",
+    "url": "https://github.com/ahmadatallah"
+  },
   "homepage": "https://github.com/ahmadatallah/jabr",
   "repository": "https://github.com/ahmadatallah/jabr",
   "license": "MIT",
-  "keywords": ["stacked-prs", "stacked-diffs", "git", "github", "gh", "pull-request", "claude-code", "agent-skill"]
+  "keywords": [
+    "stacked-prs",
+    "stacked-diffs",
+    "git",
+    "github",
+    "gh",
+    "pull-request",
+    "claude-code",
+    "agent-skill"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "jabr",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Claude-native stacked-pull-request workflow on plain git + the GitHub gh CLI.",
   "type": "module",
   "license": "MIT",
