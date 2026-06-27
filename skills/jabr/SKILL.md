@@ -26,17 +26,18 @@ mechanics (parent tracking, `rebase --onto`, force-push ordering, PR base wiring
 
 ## Running the engine
 
-Invoke the bundled engine with Bun, using its absolute path in the installed skill:
+Invoke the bundled engine with Bun. `${CLAUDE_PLUGIN_ROOT}` is set by Claude Code to
+this plugin's install directory, so the path resolves wherever the plugin is installed:
 
 ```bash
-bun ~/.claude/skills/jabr/scripts/jabr.ts <command> [args]
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts <command> [args]
 ```
 
 All commands run against the user's **current** git repository (their working
-directory), not the skill directory. Stack metadata lives in that repo's local
+directory), not the plugin directory. Stack metadata lives in that repo's local
 git config. Prerequisites: a git repo, Bun, and (for `submit`/`sync`) `gh auth login`.
 
-If the user prefers, suggest an alias: `alias jabr='bun ~/.claude/skills/jabr/scripts/jabr.ts'`.
+If the user prefers, suggest an alias: `alias jabr='bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts'`.
 
 ## Mental model
 
@@ -66,11 +67,11 @@ Confirm the plan with the user before creating branches.
 For each unit, create a branch, write the code, and commit:
 
 ```bash
-bun ~/.claude/skills/jabr/scripts/jabr.ts init                 # once: record the trunk
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts init                 # once: record the trunk
 # implement unit 1, then:
-bun ~/.claude/skills/jabr/scripts/jabr.ts create api-schema -a -m "Add user schema + migration"
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts create api-schema -a -m "Add user schema + migration"
 # implement unit 2 (now stacked on api-schema), then:
-bun ~/.claude/skills/jabr/scripts/jabr.ts create api-endpoints -a -m "Add /users endpoints"
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts create api-endpoints -a -m "Add /users endpoints"
 ```
 
 Inspect and move around the stack with `log`, `up`, `down`, `top`, `bottom`,
@@ -79,7 +80,7 @@ Inspect and move around the stack with `log`, `up`, `down`, `top`, `bottom`,
 ### 3. Submit
 
 ```bash
-bun ~/.claude/skills/jabr/scripts/jabr.ts submit --stack
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts submit --stack
 ```
 
 Pushes each branch (root-first) and opens/updates one PR per branch with its base
@@ -91,10 +92,10 @@ wired to its parent, then writes a stack-navigation block into every PR body. Us
 Edit the relevant branch, then let `jabr` realign everything above it:
 
 ```bash
-bun ~/.claude/skills/jabr/scripts/jabr.ts down          # go to the branch under review
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts down          # go to the branch under review
 # fix code
-bun ~/.claude/skills/jabr/scripts/jabr.ts modify -a     # amend + auto-restack descendants
-bun ~/.claude/skills/jabr/scripts/jabr.ts submit --stack
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts modify -a     # amend + auto-restack descendants
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts submit --stack
 ```
 
 ### 5. Sync after merges
@@ -102,8 +103,8 @@ bun ~/.claude/skills/jabr/scripts/jabr.ts submit --stack
 When PRs merge (via GitHub), bring the local stack up to date:
 
 ```bash
-bun ~/.claude/skills/jabr/scripts/jabr.ts sync            # ff trunk, report merged, restack
-bun ~/.claude/skills/jabr/scripts/jabr.ts sync --delete   # also delete merged branches + restack
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts sync            # ff trunk, report merged, restack
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts sync --delete   # also delete merged branches + restack
 ```
 
 ## Command reference

@@ -2,7 +2,7 @@
 
 A deeper reference for day-to-day use, conflict recovery, and operations the
 engine does not automate. All commands assume the alias
-`jabr='bun ~/.claude/skills/jabr/scripts/jabr.ts'`.
+`jabr='bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts'` (the `jabr` engine).
 
 ## End-to-end example
 

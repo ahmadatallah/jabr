@@ -51,13 +51,13 @@ stacked directly on branch 1 if you want it reviewed in parallel with the API.
 ## Translating the plan into commands
 
 ```bash
-bun ~/.claude/skills/jabr/scripts/jabr.ts init
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts init
 # implement schema, then:
-bun ~/.claude/skills/jabr/scripts/jabr.ts create archive-schema -a -m "Add archived_at column + migration"
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts create archive-schema -a -m "Add archived_at column + migration"
 # implement api, then:
-bun ~/.claude/skills/jabr/scripts/jabr.ts create archive-api -a -m "Add archive/unarchive endpoints"
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts create archive-api -a -m "Add archive/unarchive endpoints"
 # ...and so on, then:
-bun ~/.claude/skills/jabr/scripts/jabr.ts submit --stack
+bun "${CLAUDE_PLUGIN_ROOT}"/scripts/jabr.ts submit --stack
 ```
 
 ## When you discover a unit is too big
