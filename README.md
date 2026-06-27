@@ -11,6 +11,7 @@
   <a href="https://github.com/ahmadatallah/jabr/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/ahmadatallah/jabr/actions/workflows/ci.yml/badge.svg" /></a>
   <a href="https://github.com/ahmadatallah/jabr/actions/workflows/ci.yml"><img alt="Coverage" src="https://img.shields.io/badge/coverage-100%25-brightgreen" /></a>
   <a href="https://ahmadatallah.github.io/jabr/"><img alt="Docs" src="https://img.shields.io/badge/docs-TypeDoc-3178c6?logo=readthedocs&logoColor=white" /></a>
+  <a href="https://github.com/ahmadatallah/jabr#install"><img alt="Claude Code Plugin" src="https://img.shields.io/badge/Claude_Code-plugin-D97757?logo=claude&logoColor=white" /></a>
   <a href="https://github.com/ahmadatallah/jabr/releases"><img alt="Version" src="https://img.shields.io/github/package-json/v/ahmadatallah/jabr?label=version&color=blue" /></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green" /></a>
 </p>
@@ -57,10 +58,11 @@ from its description):
 
 ```text
 /plugin marketplace add ahmadatallah/jabr
-/plugin install jabr@jabr
+/plugin install jabr@ahmadatallah
 ```
 
-Pin a tagged version if you prefer: `/plugin marketplace add ahmadatallah/jabr@v0.1.0`.
+The marketplace is named `ahmadatallah`, so the plugin installs as `jabr@ahmadatallah`.
+Pin a tagged version if you prefer: `/plugin marketplace add ahmadatallah/jabr@v0.1.2`.
 
 [Bun](https://bun.sh) and (for `submit`/`sync`) an authenticated [`gh`](https://cli.github.com)
 are still required on your machine — the plugin can't install them for you.

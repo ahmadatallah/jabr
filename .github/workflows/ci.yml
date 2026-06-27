@@ -25,6 +25,11 @@ jobs:
       - name: Test (with 100% coverage gate)
         run: bun test --coverage
 
+      - name: Validate plugin & marketplace manifests
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude plugin validate .
+
       - name: Upload coverage (lcov)
         if: always()
         uses: actions/upload-artifact@v4
