@@ -36,6 +36,14 @@ jobs:
       - name: Build API docs
         run: bun run docs
 
+      # TypeDoc renders README.md as the docs index but does not copy repo assets
+      # it references (logo, demo GIF/MP4). Ship them so the relative paths resolve.
+      - name: Copy README media into docs site
+        run: |
+          mkdir -p site/assets
+          cp assets/logo.svg assets/logo-dark.svg assets/logo.png \
+             assets/demo.gif assets/demo.mp4 site/assets/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

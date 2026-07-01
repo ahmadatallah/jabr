@@ -29,6 +29,14 @@ PRs — each one reviewable on its own, each branched off the one below it. `jab
 parent/child graph, restacks (rebases) descendants when a lower branch changes, and submits
 the whole stack to GitHub with correct base branches and a navigation comment.
 
+## Idea visualized
+
+A 30-second walkthrough of the whole flow — decompose → stack → restack → submit → sync —
+animated from the `jabr` logo. The preview below plays silently; **click it to watch the
+full video with audio**.
+
+[![jabr — stacked pull requests, animated](assets/demo.gif)](assets/demo.mp4)
+
 ## Why stack?
 
 - **Smaller diffs → faster, better reviews.** A 1,500-line PR gets rubber-stamped; five

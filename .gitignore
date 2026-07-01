@@ -22,3 +22,6 @@ coverage/
 # Logs / temp
 *.log
 *.tmp
+
+# /brag video working directory (rendered artifacts live in assets/)
+brag-output/
